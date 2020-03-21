@@ -1,10 +1,38 @@
 #include <iostream>
+#include <vector>
 #include "Loan.h"
 
 using namespace std;
 
-void display (double a, int b, int c, double d){
-    Loan p (a, b, c, d);
+Loan addLoan(){
+    double debt, interestrate;
+    int years, payments, loanId;
+
+    std :: cout << "Enter a 3 digt loan id: ";
+    std::cin >> loanId;
+
+    std :: cout << "Enter the duration of the loans in years: ";
+    std :: cin >> years;
+
+    std :: cout << "Enter the amount of the debt: ";
+    std :: cin >> debt;
+
+    std :: cout << "Enter the interrest rate: ";
+    std :: cin >> interestrate;
+
+    std :: cout << "Enter the amount of payment per annual: ";
+    std :: cin >> payments;
+
+    return Loan(debt, years, payments, interestrate, loanId);
+
+}
+
+void seachLoan(){
+
+}
+
+void display (double a, int b, int c, double d, int e){
+    Loan p (a, b, c, d, e);
 
     double balance, monthlyPaidInt, MonthPrincipal, MonIntRate, MonthPmt;
 
@@ -19,7 +47,7 @@ void display (double a, int b, int c, double d){
 
     bool run = true;
 
-while (run == true){
+while (run){
     for (int i=1; i <= p.getYears()*12; i++)
         {
 
@@ -28,7 +56,7 @@ while (run == true){
             MonthPrincipal = MonthPmt + monthlyPaidInt;
             balance = balance - MonthPrincipal;
 
-            if(monthlyPaidInt < 0){
+            if(balance < 0){
                 run = false;
             }
 
@@ -50,10 +78,11 @@ void otherTypeOfLoans(){
     Loan a;
     Loan b;
 
-    int years;
-    double debt;
-    double interrestrate;
-    int payments;
+    int years, payments, loanId;
+    double debt, interrestrate;
+
+    std :: cout << "Enter a 3 digt loan id: ";
+    std::cin >> loanId;
 
     std :: cout << "Enter the duration of the loans in years: ";
     std :: cin >> years;
@@ -72,15 +101,16 @@ void otherTypeOfLoans(){
     a.setDebt(debt);
     a.setInterestRate(interrestrate);
     a.setPaymentsPerYear(payments);
+    a.setLoanId(loanId);
 
-    display(debt, years, payments, interrestrate);
+    display(debt, years, payments, interrestrate, loanId);
 
 
 }
 
 void taxDeduction(){
 
-    Loan p (1000000.00, 30, 12, 3.0);
+    Loan p (1000000.00, 30, 12, 3.0, 001);
 
     std :: cout << "Total interrest is : " << p.totaltInterest()
                 <<std :: endl;
@@ -90,8 +120,6 @@ void taxDeduction(){
 
 
 }
-
-
 
 void displayChoice(){
 
