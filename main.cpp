@@ -27,7 +27,8 @@ void display (){
 
     std :: cout <<"\t Amortized Payment Schedule" << std :: endl;
     std :: cout <<setw(6)<<left<<"Month"<<setw(12)<<left<<"Paid Principal"<<setw(14)<<right<<"Paid Interest"<<setw(12)<<right<<"New Balance"
-                <<std :: endl;
+                <<setw(12)<<right<< "Total payments"
+                << std :: endl;
 
     bool a = true;
 
@@ -49,6 +50,7 @@ while (a){
                       << std::setw(12) << std::left  << std::setprecision(2) << std::fixed << MonthPrincipal
                       << std::setw(14) << std::right << std::setprecision(2) << std::fixed << monthlyPaidInt
                       << std::setw(14) << std::right << std::setprecision(2) << std::fixed << balance
+                      << std::setw(14) << std::right << std::setprecision(2) << std::fixed << p.getDebt()-balance
                       << std::endl;
 
 
@@ -60,31 +62,42 @@ while (a){
 
 void displayChoice(){
 
+      char a;
+do{
     std :: cout << "Press 1 to see the payments of the loan." << std :: endl
                 << "Press 2 to see the total i nterest tax deducted." << std :: endl
-                << "Press 3 to kill yourself." << std :: endl;
+                << "Press 3 to kill yourself." << std :: endl
+                << "Press q to quit." << std :: endl;
 
-    char a;
+
 
     std :: cin >> a;
 
     switch (a) {
-    case 1: {
+    case '1': {
         display();
         break;
     }
-    case 2: {
-        std :: cout << "Make the method for totalInterestTaxDeducted dumbass" << std :: endl;
+    case '2': {
+        taxDeduction();
+        break;
+    }
+    case '3': {
+        std :: cout << "Hold ud " << std::endl;
+        break;
     }
 
     }
+    } while(a != 'q');
 }
 
 int main()
 {
     //display();
 
-    taxDeduction();
+   // taxDeduction();
+
+    displayChoice();
 
     return 0;
 }

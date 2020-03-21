@@ -80,8 +80,7 @@ double Loan :: getMonthlyInterest() const{
 double Loan :: totaltInterest() const{
 
     double totalInterest;
-
-    totalInterest = _debt - totalPayment();
+    totalInterest = _debt * getYears() * getInterestRate();
     return totalInterest;
 }
 
