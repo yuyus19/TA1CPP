@@ -3,21 +3,8 @@
 
 using namespace std;
 
-void taxDeduction(){
-
-    Loan p (1000000.00, 30, 12, 3.0);
-
-    std :: cout << "Total interrest is : " << p.totaltInterest()
-                <<std :: endl;
-
-    std :: cout << "Your total tax dection is : " << p.totalInterestTaxDeducted(30.6)
-                << std :: endl;
-
-
-}
-
-void display (){
-    Loan p (1000000, 30, 12, 3.0);
+void display (double a, int b, int c, double d){
+    Loan p (a, b, c, d);
 
     double balance, monthlyPaidInt, MonthPrincipal, MonIntRate, MonthPmt;
 
@@ -30,9 +17,9 @@ void display (){
                 <<setw(12)<<right<< "Total payments"
                 << std :: endl;
 
-    bool a = true;
+    bool run = true;
 
-while (a){
+while (run == true){
     for (int i=1; i <= p.getYears()*12; i++)
         {
 
@@ -41,8 +28,8 @@ while (a){
             MonthPrincipal = MonthPmt + monthlyPaidInt;
             balance = balance - MonthPrincipal;
 
-            if(balance < 0){
-                a = false;
+            if(monthlyPaidInt < 0){
+                run = false;
             }
 
 
@@ -56,6 +43,52 @@ while (a){
 
         }
     }
+}
+
+void otherTypeOfLoans(){
+
+    Loan a;
+    Loan b;
+
+    int years;
+    double debt;
+    double interrestrate;
+    int payments;
+
+    std :: cout << "Enter the duration of the loans in years: ";
+    std :: cin >> years;
+
+    std :: cout << "Enter the amount of the debt: ";
+    std :: cin >> debt;
+
+    std :: cout << "Enter the interrest rate: ";
+    std :: cin >> interrestrate;
+
+    std :: cout << "Enter the amount of payment per annual: ";
+    std :: cin >> payments;
+
+
+    a.setYears(years);
+    a.setDebt(debt);
+    a.setInterestRate(interrestrate);
+    a.setPaymentsPerYear(payments);
+
+    display(debt, years, payments, interrestrate);
+
+
+}
+
+void taxDeduction(){
+
+    Loan p (1000000.00, 30, 12, 3.0);
+
+    std :: cout << "Total interrest is : " << p.totaltInterest()
+                <<std :: endl;
+
+    std :: cout << "Your total tax dection is : " << p.totalInterestTaxDeducted(30.6)
+                << std :: endl;
+
+
 }
 
 
@@ -75,7 +108,7 @@ do{
 
     switch (a) {
     case '1': {
-        display();
+        std :: cout << "Hold ud \n";
         break;
     }
     case '2': {
@@ -83,10 +116,13 @@ do{
         break;
     }
     case '3': {
-        std :: cout << "Hold ud " << std::endl;
+        otherTypeOfLoans();
         break;
     }
-
+    default: {
+        std :: cout << "Er Victor en dickhead?\n " << "Ja, det er han :)\n";
+        break;
+    }
     }
     } while(a != 'q');
 }
@@ -97,7 +133,7 @@ int main()
 
    // taxDeduction();
 
-    displayChoice();
+   displayChoice();
 
     return 0;
 }
