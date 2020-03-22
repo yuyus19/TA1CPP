@@ -152,7 +152,6 @@ do{
     }
     } while(a != 'q');
 }
-
 int main()
 {
     //display();
