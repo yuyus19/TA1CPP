@@ -1,5 +1,6 @@
 #include "Loan.h"
 #include <cmath>
+#include <vector>
 
 Loan::Loan()
 {
@@ -112,23 +113,7 @@ double Loan :: totalInterestTaxDeducted(double taxDeductionRate) const{
     return totaltInterest() * taxDeductionRate;
 }
 
-std::vector<PhoneBookPerson> PhoneBook::search(const std::string& s) const {
-    std::vector<PhoneBookPerson> res;
 
-    std::string snew(s);
-    std::transform(snew.begin(), snew.end(), snew.begin(), ::toupper);
-
-    // Search for a person with string-function find
-    for (const PhoneBookPerson& p : mPersons) {
-        std::string pName(p.name());
-        std::transform(pName.begin(), pName.end(), pName.begin(), ::toupper);
-
-        if (pName.find(snew) != pName.npos)
-            res.push_back(p);
-    }
-
-    return res;
-}
 
 
 

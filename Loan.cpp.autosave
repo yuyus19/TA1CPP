@@ -1,6 +1,7 @@
 #include "Loan.h"
 #include <cmath>
 #include <vector>
+#include <algorithm>
 
 Loan::Loan()
 {
@@ -114,6 +115,35 @@ double Loan :: totalInterestTaxDeducted(double taxDeductionRate) const{
 }
 
 
+std::vector<Loan> Database::client() const
+{
+    return mClient;
+}
 
+void Database::setClient(const std::vector<Loan> &client)
+{
+    mClient = client;
+}
 
+void Database::addLoan(const Loan &p) {
+    mClient.push_back(p);
+}
 
+std::vector<Loan> Database::search(const std::string& s) const {
+    std::vector<Loan> res;
+
+    std::string snew(s);
+    std::transform(snew.begin(), snew.end(), snew.begin(), ::toupper);
+
+    // Search for a person with string-function find
+    for (const Loan& p : mClient) {
+        int pId(p.getLoanId());
+        
+        std::transform(pId.begin(), pId.end(), pId.begin(), ::toupper);
+
+        if (pId.find(snew) != pId.npos)
+            res.push_back(p);
+    }
+
+    return res;
+}

@@ -3,6 +3,8 @@
 
 #include <iomanip>
 #include <iostream>
+#include <string>
+#include <vector>
 
 
 class Loan
@@ -11,7 +13,7 @@ public:
     Loan();
 
     Loan(double debt, int years, int paymentsPerYear,
-         double interestRate);
+         double interestRate, int loanId);
 
     // Returns the number of years the loan lasts
     int getYears()const;
@@ -51,11 +53,24 @@ public:
     double getBalance()const;
     void setBalance(double balance);
 
+    int getLoanId() const;
+    void setLoanId(int loanId);
+
 private:
 
     double _debt, _interestRate, mBalance;
-    int mYears, mPaymentsPerYear;
+    int mYears, mPaymentsPerYear, mLoanId;
 
+
+};
+
+class Database
+{
+
+public:
+
+private:
+     std::vector<PhoneBookPerson> mPersons;
 };
 
 #endif // LOAN_H

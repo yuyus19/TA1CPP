@@ -27,9 +27,7 @@ Loan addLoan(){
 
 }
 
-void seachLoan(){
 
-}
 
 void display (double a, int b, int c, double d, int e){
     Loan p (a, b, c, d, e);

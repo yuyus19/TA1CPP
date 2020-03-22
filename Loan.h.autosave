@@ -3,6 +3,8 @@
 
 #include <iomanip>
 #include <iostream>
+#include <string>
+#include <vector>
 
 
 class Loan
@@ -53,13 +55,26 @@ public:
 
     int getLoanId() const;
     void setLoanId(int loanId);
-    
+
 private:
-    
+
     double _debt, _interestRate, mBalance;
     int mYears, mPaymentsPerYear, mLoanId;
-    
 
+
+};
+
+class Database
+{
+
+public:
+
+    std::vector<Loan> client() const;
+    void setClient(const std::vector<Loan> &client);
+    void addLoan(const Loan& p);
+    std::vector<Loan> search(const std::string& s) const;
+private:
+    std::vector<Loan> mClient;
 };
 
 #endif // LOAN_H
