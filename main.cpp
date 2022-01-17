@@ -134,7 +134,7 @@ do{
 
     switch (a) {
     case '1': {
-        std :: cout << "Hold ud \n";
+        std :: cout << "CASE 1";
         break;
     }
     case '2': {
@@ -146,7 +146,7 @@ do{
         break;
     }
     default: {
-        std :: cout << "Er Victor en dickhead?\n " << "Ja, det er han :)\n";
+        std :: cout << "DEFUALT \n";
         break;
     }
     }
